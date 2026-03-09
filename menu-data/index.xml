@@ -1,0 +1,66 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Menu Data</title></head><body>
+<script type="application/json" id="hh-menu-data">
+{
+  "phoneTel": "tel:+13372211035",
+  "deliveryNote": "Delivery available for 10+ orders within a 10-mile radius.",
+  "hours": {
+    "note": "Breakfast, lunch, salad bar, drinks, dessert, and seasonal crawfish offerings may vary.",
+    "weekly": [
+      {"day":"Monday","open":"5:30 AM","close":"2:00 PM","breakfast":"5:30 AM – 10:30 AM","lunch":"10:30 AM – 2:00 PM"},
+      {"day":"Tuesday","open":"5:30 AM","close":"2:00 PM","breakfast":"5:30 AM – 10:30 AM","lunch":"10:30 AM – 2:00 PM"},
+      {"day":"Wednesday","open":"5:30 AM","close":"2:00 PM","breakfast":"5:30 AM – 10:30 AM","lunch":"10:30 AM – 2:00 PM"},
+      {"day":"Thursday","open":"5:30 AM","close":"2:00 PM","breakfast":"5:30 AM – 10:30 AM","lunch":"10:30 AM – 2:00 PM"},
+      {"day":"Friday","open":"5:30 AM","close":"2:00 PM","breakfast":"5:30 AM – 10:30 AM","lunch":"10:30 AM – 2:00 PM"},
+      {"day":"Saturday","open":"6:00 AM","close":"2:00 PM","breakfast":"6:00 AM – 10:30 AM","lunch":"10:30 AM – 2:00 PM"},
+      {"day":"Sunday","open":"7:00 AM","close":"3:00 PM","breakfast":"7:00 AM – 10:30 AM","lunch":"10:30 AM – 3:00 PM"}
+    ]
+  },
+  "settings": {
+    "showAdvancedTab": true,
+    "advancedWindowDays": 7,
+    "advancedDisclaimer": "Future menu items are subject to change.",
+    "autoClearPastDays": false,
+    "autoClearMessage": "Lunch menu unavailable.",
+    "clickForDescriptionHint": "Tap an item for description.",
+    "noDescriptionText": "No description for this item."
+  },
+  "closures": {},
+  "defaults": {
+    "breakfast": {
+      "subtitle": "Breakfast & lunch • cafeteria-style • made from scratch.",
+      "plates": ["2 Eggs Plate", "Biscuit Plate", "Pancake Plate"],
+      "items": ["Biscuit", "Gravy", "Bacon", "Sausage", "Hashbrowns", "Toast", "Grits", "Eggs"]
+    },
+    "lunch": {
+      "subtitle": "Fresh. Filling. From scratch.",
+      "plates": ["Daily Plate Lunch", "Meat + 2 Sides", "Meat + 3 Sides"],
+      "items": [
+        {"name":"Daily Lunch Item","desc":"See Facebook or call the restaurant for the latest lunch specials."},
+        {"name":"Southern Sides","desc":"Homestyle side selections vary by day."}
+      ]
+    },
+    "crawfish": {
+      "subtitle": "Seasonal evening crawfish hours may apply.",
+      "items": ["Call to ask about crawfish availability."]
+    },
+    "salad": {
+      "subtitle": "Salad bar available daily.",
+      "items": ["Regular salad bar", "Large salad bar"],
+      "saladBar": {
+        "lettuce": ["Iceberg", "Spring mix"],
+        "toppings": ["Tomatoes", "Cheese", "Bacon bits", "Croutons", "Cucumber"],
+        "dressing": ["Ranch", "Italian", "Thousand Island"]
+      }
+    },
+    "drinks": {
+      "items": ["Sweet tea", "Unsweet tea", "Soft drinks", "Coffee", "Water"]
+    },
+    "dessert": {
+      "subtitle": "Desserts may change daily.",
+      "items": ["Ask about today’s dessert."]
+    }
+  },
+  "menus": {}
+}
+</script>
+</body></html>
