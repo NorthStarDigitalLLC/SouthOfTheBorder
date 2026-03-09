@@ -1,0 +1,112 @@
+{
+  "sections": [
+    {
+      "slug": "breakfast",
+      "name": "Breakfast",
+      "heading": "Plates & available items",
+      "description": "Replace these placeholder lines with the exact breakfast plate list from the live business menu.",
+      "items": [
+        {
+          "name": "Breakfast Plate Placeholder 1",
+          "note": "Add the exact item text here."
+        },
+        {
+          "name": "Breakfast Plate Placeholder 2",
+          "note": "Add the exact item text here."
+        },
+        {
+          "name": "Breakfast Side Placeholder",
+          "note": "Use this section for available daily items."
+        }
+      ]
+    },
+    {
+      "slug": "lunch",
+      "name": "Lunch",
+      "heading": "Daily lunch favorites",
+      "description": "The live public menu route showed lunch sections, but the exact dynamic items were not fully visible during access.",
+      "items": [
+        {
+          "name": "Daily Lunch Plate Placeholder",
+          "note": "Replace with exact lunch plate name."
+        },
+        {
+          "name": "Daily Vegetable Placeholder",
+          "note": "Replace with exact side or daily item."
+        },
+        {
+          "name": "Daily Special Placeholder",
+          "note": "Use this for featured lunch items."
+        }
+      ]
+    },
+    {
+      "slug": "crawfish",
+      "name": "Crawfish",
+      "heading": "Seasonal crawfish service",
+      "description": "Use this area for crawfish sizes, pricing, and evening availability.",
+      "items": [
+        {
+          "name": "Crawfish Option Placeholder",
+          "note": "Example: pricing, pounds, or combo details."
+        },
+        {
+          "name": "Add-On Placeholder",
+          "note": "Corn, potatoes, sausage, etc."
+        }
+      ]
+    },
+    {
+      "slug": "salad-bar",
+      "name": "Salad Bar",
+      "heading": "Pricing, lettuce, toppings, dressing",
+      "description": "The live site calls out these specific salad bar subsections.",
+      "items": [
+        {
+          "name": "Salad Bar Pricing Placeholder",
+          "note": "Add exact pricing."
+        },
+        {
+          "name": "Lettuce / Greens Placeholder",
+          "note": "Add exact lettuce types."
+        },
+        {
+          "name": "Toppings / Dressing Placeholder",
+          "note": "Add the exact list."
+        }
+      ]
+    },
+    {
+      "slug": "drinks",
+      "name": "Drinks",
+      "heading": "Drink list",
+      "description": "Add fountain, tea, bottled drinks, or specialty beverages here.",
+      "items": [
+        {
+          "name": "Drink Placeholder 1",
+          "note": "Replace with exact item."
+        },
+        {
+          "name": "Drink Placeholder 2",
+          "note": "Replace with exact item."
+        }
+      ]
+    },
+    {
+      "slug": "dessert",
+      "name": "Dessert",
+      "heading": "Sweet finish",
+      "description": "Use this for dessert items, rotating cakes, cobblers, or pies.",
+      "items": [
+        {
+          "name": "Dessert Placeholder 1",
+          "note": "Replace with exact dessert item."
+        },
+        {
+          "name": "Dessert Placeholder 2",
+          "note": "Replace with exact dessert item."
+        }
+      ]
+    }
+  ]
+}
