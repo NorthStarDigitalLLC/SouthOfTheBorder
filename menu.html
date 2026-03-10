@@ -122,6 +122,68 @@
   </div>
 </div>
 
+  <!-- ==================== GUIDED EXPLORE NAV ==================== -->
+<div id="genRoot" class="gen-root" hidden>
+  <button id="genPill" class="gen-pill" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="genPanel">
+    <span class="gen-pill-ic" aria-hidden="true">🧭</span>
+    <span class="gen-pill-tx">Explore</span>
+    <span class="gen-pill-dot" aria-hidden="true"></span>
+  </button>
+  <div id="genPanel" class="gen-panel" role="dialog" aria-modal="false" aria-label="Explore the page" aria-hidden="true">
+    <div class="gen-panel-head">
+      <div class="gen-panel-title">
+        <div class="gen-title">Explore</div>
+        <div class="gen-sub">Jump to sections instantly</div>
+      </div>
+      <button id="genClose" class="gen-close" type="button" aria-label="Close explore panel">✕</button>
+    </div>
+    <div class="gen-panel-body">
+      <div class="gen-search" role="search">
+        <span class="gen-search-ic" aria-hidden="true">⌕</span>
+        <input id="genSearch" type="text" class="gen-search-input" placeholder="Search sections…" autocomplete="off" inputmode="search">
+      </div>
+      <div id="genList" class="gen-list" role="list"></div>
+    </div>
+    <div class="gen-panel-foot">
+      <div class="gen-foot-left">
+        <span class="gen-mini" aria-hidden="true">🔥</span>
+        <span class="gen-foot-tx">Tip: click a section to jump</span>
+      </div>
+      <button id="genTop" class="gen-top" type="button">Back to top</button>
+    </div>
+  </div>
+  <button id="genCoach" class="gen-coach" type="button" aria-label="Scroll to explore" hidden>
+    <span class="gen-coach-ic" aria-hidden="true">↓</span>
+    <span class="gen-coach-tx">Scroll for more</span>
+  </button>
+  <nav id="genDock" class="gen-dock" aria-label="Quick actions" hidden>
+    <a class="gen-dock-btn" href="index.html" aria-label="Home">
+      <span class="gen-dock-ic" aria-hidden="true">🏠</span>
+      <span class="gen-dock-tx">Home</span>
+    </a>
+    <a class="gen-dock-btn" href="menu.html" aria-label="Menu">
+      <span class="gen-dock-ic" aria-hidden="true">🍽️</span>
+      <span class="gen-dock-tx">Menu</span>
+    </a>
+    <a class="gen-dock-btn" href="/delivery" aria-label="Delivery options">
+      <span class="gen-dock-ic" aria-hidden="true">🚗</span>
+      <span class="gen-dock-tx">Delivery</span>
+    </a>
+    <a class="gen-dock-btn gen-dock-cta" href="tel:3372211035" aria-label="Place an order">
+      <span class="gen-dock-ic" aria-hidden="true">📞</span>
+      <span class="gen-dock-tx">Order</span>
+    </a>
+    <a id="genAboutLink" class="gen-dock-btn" href="/about" aria-label="About us">
+      <span class="gen-dock-ic" aria-hidden="true">ℹ️</span>
+      <span class="gen-dock-tx">About</span>
+    </a>
+    <button id="genSideShare" class="gen-dock-btn gen-side-share" type="button" aria-label="Share this page">
+      <span class="gen-dock-ic" aria-hidden="true">📤</span>
+      <span class="gen-dock-tx">Share</span>
+    </button>
+  </nav>
+</div>
+
 <!-- ==================== FOOTER ==================== -->
 <footer class="site-footer" aria-label="Footer"> ... </footer> <!-- paste footer from index.html -->
 
