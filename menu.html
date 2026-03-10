@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hot Headz – Menu</title>
+  <title>Hot Headz – Daily Menu</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<!-- Guided Explore Nav (same as index) -->
-<div id="genRoot" class="gen-root" hidden>...</div> <!-- copy from index.html -->
+<!-- ==================== GUIDED EXPLORE NAV (copy from index.html) ==================== -->
+<div id="genRoot" class="gen-root" hidden> ... </div> <!-- paste the same genRoot block here -->
 
+<!-- ==================== FULL MENU HTML (from Menu Code.xml) ==================== -->
 <div class="hh-menu" role="region" aria-label="Menu" id="hh-menu-root">
-  <!-- Sticky top nav -->
   <div class="hh-stickywrap">
     <div class="hh-daybar" role="tablist" aria-label="Day selector">
       <button class="hh-day is-active" type="button" role="tab" aria-selected="true" aria-controls="hh-day-today" id="hhDayBtnToday">Today</button>
@@ -21,20 +21,111 @@
     </div>
   </div>
 
-  <!-- TODAY panel (full HTML as in original) -->
-  <!-- ... (I'm truncating for brevity, but you should copy the full panel HTML from Menu Code.xml) -->
-  <!-- In the interest of space, please copy the entire .hh-menu content from Menu Code.xml between the <div class="hh-menu"> tags -->
-  <!-- Ensure all IDs remain exactly as in the original: hh-today-title, hh-hours-line, etc. -->
+  <!-- TODAY -->
+  <div class="hh-daypanel is-active" id="hh-day-today" role="tabpanel" aria-labelledby="hhDayBtnToday">
+    <div class="hh-header">
+      <div class="hh-title" id="hh-today-title">Today’s Menu</div>
+      <div class="hh-updated" id="hh-hours-line">Loading hours…</div>
+      <div class="hh-note" id="hh-hours-note"></div>
+    </div>
+    <div class="hh-state hh-closed" id="hh-today-closed" hidden>
+      <div class="hh-badge">Closed</div>
+      <div class="hh-state-title" id="hh-today-closed-title"></div>
+      <div class="hh-state-msg" id="hh-today-closed-msg"></div>
+    </div>
+    <div class="hh-tablist" role="tablist" aria-label="Today categories">
+      <button class="hh-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="hh-today-breakfast" id="hhTabTodayBreakfast">Breakfast</button>
+      <button class="hh-tab" type="button" role="tab" aria-selected="false" aria-controls="hh-today-lunch" id="hhTabTodayLunch">Lunch</button>
+      <button class="hh-tab" type="button" role="tab" aria-selected="false" aria-controls="hh-today-crawfish" id="hhTabTodayCrawfish">Crawfish</button>
+      <button class="hh-tab" type="button" role="tab" aria-selected="false" aria-controls="hh-today-salad" id="hhTabTodaySalad">Salad Bar</button>
+      <button class="hh-tab" type="button" role="tab" aria-selected="false" aria-controls="hh-today-drinks" id="hhTabTodayDrinks">Drinks</button>
+      <button class="hh-tab" type="button" role="tab" aria-selected="false" aria-controls="hh-today-dessert" id="hhTabTodayDessert">Dessert</button>
+    </div>
+    <div class="hh-panels">
+      <section class="hh-panel is-active" id="hh-today-breakfast" role="tabpanel" aria-labelledby="hhTabTodayBreakfast">
+        <h3>Breakfast</h3>
+        <p class="hh-sub" id="hh-today-breakfast-sub"></p>
+        <h4>Plates</h4>
+        <ul class="hh-stack" id="hh-today-breakfast-plates"></ul>
+        <h4>Available Items</h4>
+        <ul class="hh-stack" id="hh-today-breakfast-items"></ul>
+        <div class="hh-cta">
+          <a class="hh-btn" id="hh-call-btn-today-b" href="#">Call to Order</a>
+          <div class="hh-small" id="hh-delivery-note"></div>
+        </div>
+      </section>
+      <section class="hh-panel" id="hh-today-lunch" hidden role="tabpanel" aria-labelledby="hhTabTodayLunch">
+        <h3>Lunch</h3>
+        <p class="hh-sub" id="hh-today-lunch-sub">Loading today’s lunch menu…</p>
+        <div class="hh-lunch-unavail" id="hh-today-lunch-unavail" hidden>
+          <div class="hh-badge is-dark">Unavailable</div>
+          <div class="hh-lunch-unavail-title" id="hh-today-lunch-unavail-title">Lunch menu unavailable.</div>
+        </div>
+        <div id="hh-today-lunch-content" style="display:none">
+          <h4>Plates</h4>
+          <ul class="hh-stack" id="hh-today-lunch-plates"></ul>
+          <h4 id="hh-today-lunch-items-title">Today’s Lunch Items</h4>
+          <div class="hh-hintline" id="hh-today-lunch-hint" hidden></div>
+          <ul class="hh-stack" id="hh-today-lunch-items"></ul>
+        </div>
+        <div class="hh-cta">
+          <a class="hh-btn" id="hh-call-btn-today-l" href="#">Call to Order</a>
+        </div>
+      </section>
+      <section class="hh-panel" id="hh-today-crawfish" hidden role="tabpanel" aria-labelledby="hhTabTodayCrawfish">
+        <h3>Crawfish</h3>
+        <p class="hh-sub" id="hh-today-crawfish-sub"></p>
+        <ul class="hh-stack" id="hh-today-crawfish-items"></ul>
+        <div class="hh-cta">
+          <a class="hh-btn" id="hh-call-btn-today-c" href="#">Call to Order</a>
+        </div>
+      </section>
+      <section class="hh-panel" id="hh-today-salad" hidden role="tabpanel" aria-labelledby="hhTabTodaySalad">
+        <h3>Salad Bar</h3>
+        <p class="hh-sub" id="hh-today-salad-sub"></p>
+        <h4>Pricing</h4>
+        <ul class="hh-stack" id="hh-today-salad-pricing"></ul>
+        <h4>Lettuce</h4>
+        <ul class="hh-stack" id="hh-today-salad-lettuce"></ul>
+        <h4>Toppings</h4>
+        <ul class="hh-stack" id="hh-today-salad-toppings"></ul>
+        <h4>Dressing</h4>
+        <ul class="hh-stack" id="hh-today-salad-dressing"></ul>
+      </section>
+      <section class="hh-panel" id="hh-today-drinks" hidden role="tabpanel" aria-labelledby="hhTabTodayDrinks">
+        <h3>Drinks</h3>
+        <ul class="hh-stack" id="hh-today-drinks-items"></ul>
+      </section>
+      <section class="hh-panel" id="hh-today-dessert" hidden role="tabpanel" aria-labelledby="hhTabTodayDessert">
+        <h3>Dessert</h3>
+        <p class="hh-sub" id="hh-today-dessert-sub"></p>
+        <ul class="hh-stack" id="hh-today-dessert-items"></ul>
+      </section>
+    </div>
+  </div>
+
+  <!-- TOMORROW -->
+  <div class="hh-daypanel" id="hh-day-tomorrow" hidden role="tabpanel" aria-labelledby="hhDayBtnTomorrow">
+    ... <!-- Paste the full TOMORROW panel from Menu Code.xml here -->
+  </div>
+
+  <!-- ADVANCED -->
+  <div class="hh-daypanel" id="hh-day-advanced" hidden role="tabpanel" aria-labelledby="hhDayBtnAdvanced">
+    ... <!-- Paste the full ADVANCED panel from Menu Code.xml here -->
+  </div>
+
+  <!-- Error state -->
+  <div class="hh-state" id="hh-load-error" hidden>
+    <div class="hh-badge is-dark">Error</div>
+    <div class="hh-state-title">Menu couldn’t load</div>
+    <p class="hh-state-msg" id="hh-load-error-msg">Please try again in a moment.</p>
+  </div>
 </div>
 
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer" aria-label="Footer"> ... </footer> <!-- paste footer from index.html -->
+
 <script src="assets/js/global.js"></script>
-<script>
-  // Menu initialization script from Menu Code.xml
-  (function(){
-    const DATA_URLS = ["menu-data.html", "menu-data/"];
-    // ... paste the entire IIFE from Menu Code.xml here ...
-    // (it will fetch data from menu-data.html)
-  })();
-</script>
+<script src="assets/js/menu.js"></script> <!-- we'll create this next -->
 </body>
 </html>
