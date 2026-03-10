@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<!-- Guided Explore Nav (global) -->
+<!-- ==================== GUIDED EXPLORE NAV (from Header Code Injection) ==================== -->
 <div id="genRoot" class="gen-root" hidden>
   <button id="genPill" class="gen-pill" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="genPanel">
     <span class="gen-pill-ic" aria-hidden="true">🧭</span>
@@ -43,7 +43,7 @@
     <span class="gen-coach-tx">Scroll for more</span>
   </button>
   <nav id="genDock" class="gen-dock" aria-label="Quick actions" hidden>
-    <a class="gen-dock-btn" href="/" aria-label="Home">
+    <a class="gen-dock-btn" href="index.html" aria-label="Home">
       <span class="gen-dock-ic" aria-hidden="true">🏠</span>
       <span class="gen-dock-tx">Home</span>
     </a>
@@ -70,7 +70,7 @@
   </nav>
 </div>
 
-<!-- Required anchors for Explore Nav -->
+<!-- ==================== ANCHORS FOR EXPLORE NAV (must be on page) ==================== -->
 <div id="gen-home" style="position:absolute; top:0; left:0; width:1px; height:1px;"></div>
 <div id="gen-delivery" style="position:absolute; top:0; left:0; width:1px; height:1px;"></div>
 <div id="gen-menu" style="position:absolute; top:0; left:0; width:1px; height:1px;"></div>
@@ -78,13 +78,14 @@
 <div id="gen-about" style="position:absolute; top:0; left:0; width:1px; height:1px;"></div>
 <div id="gen-location" style="position:absolute; top:0; left:0; width:1px; height:1px;"></div>
 
-<!-- Main Homepage Content -->
+<!-- ==================== HOMEPAGE CONTENT (from HomePage.xml) ==================== -->
 <section class="hhx-home" aria-label="Hot Headz Southern Foods homepage">
   <div class="hhx-backdrop" aria-hidden="true">
     <div class="hhx-smoke"></div>
     <div class="hhx-glow"></div>
   </div>
   <div class="hhx-wrap">
+    <!-- HERO -->
     <header class="hhx-hero">
       <div class="hhx-heroCard">
         <div class="hhx-kicker">Home-style Southern cooking, made fresh daily</div>
@@ -109,7 +110,7 @@
       </div>
     </header>
 
-    <!-- Navigation Cards -->
+    <!-- NAV CARDS -->
     <section class="hhx-navGrid" aria-label="Navigate">
       <a class="hhx-navCard" href="menu.html">
         <div class="hhx-navIcon" aria-hidden="true">🍽️</div>
@@ -133,7 +134,7 @@
       </a>
     </section>
 
-    <!-- Story + Hours/Location -->
+    <!-- STORY + HOURS -->
     <section class="hhx-split">
       <article class="hhx-panel">
         <h2 class="hhx-h2">Fresh. Filling. From scratch.</h2>
@@ -171,7 +172,7 @@
       </aside>
     </section>
 
-    <!-- Facebook Section -->
+    <!-- FACEBOOK SECTION -->
     <section class="hhx-fbWrap" aria-label="Facebook updates">
       <div class="hhx-fbPanel">
         <div class="hhx-fbTop">
@@ -201,7 +202,7 @@
       </div>
     </section>
 
-    <!-- Scrolling Photos -->
+    <!-- SCROLLING PHOTOS -->
     <section class="hhx-marquee" aria-label="Photo highlights">
       <div class="hhx-marqueeTrack">
         <figure class="hhx-photo"><img src="https://images.squarespace-cdn.com/content/v1/696710c636aacc1859901840/a1f1f8e4-ac79-47f2-83d3-3ca8cdc1465f/_1013557.png?format=750w" alt=""></figure>
@@ -212,7 +213,7 @@
         <figure class="hhx-photo"><img src="https://images.squarespace-cdn.com/content/v1/696710c636aacc1859901840/60a521f4-075c-4248-b85b-0bd8c3bfcf24/FoodPicHotHeadz2.jpg?format=750w?format=750w" alt=""></figure>
         <figure class="hhx-photo"><img src="https://images.squarespace-cdn.com/content/v1/696710c636aacc1859901840/bd1149f5-9010-4315-947f-43d0aae70bf9/FoodPicHotHeadz1.jpg?format=750w?format=750w" alt=""></figure>
         <figure class="hhx-photo"><img src="https://images.squarespace-cdn.com/content/v1/696710c636aacc1859901840/a826ba0b-4314-493b-a043-7e310475acfe/FoodPicHotHeadz.jpg?format=750w?format=750w" alt=""></figure>
-        <!-- duplicate for loop -->
+        <!-- duplicate for seamless loop -->
         <figure class="hhx-photo"><img src="https://images.squarespace-cdn.com/content/v1/696710c636aacc1859901840/a1f1f8e4-ac79-47f2-83d3-3ca8cdc1465f/_1013557.png?format=750w" alt=""></figure>
         <figure class="hhx-photo"><img src="https://images.squarespace-cdn.com/content/v1/696710c636aacc1859901840/bb8c3f58-b60a-43c8-a27b-23016601ae79/_1013546.png?format=750w" alt=""></figure>
         <figure class="hhx-photo"><img src="https://images.squarespace-cdn.com/content/v1/696710c636aacc1859901840/e224a71b-4f49-491f-b025-2c35d8ebbbc9/627539034_1382867730524063_6201184549603031044_n.jpg?format=750w" alt=""></figure>
@@ -223,36 +224,35 @@
         <figure class="hhx-photo"><img src="https://images.squarespace-cdn.com/content/v1/696710c636aacc1859901840/a826ba0b-4314-493b-a043-7e310475acfe/FoodPicHotHeadz.jpg?format=750w?format=750w" alt=""></figure>
       </div>
     </section>
-
-    <!-- Hero Preview (Lunch Strip) -->
-    <section id="hhHomeMenuHero" aria-label="Today’s lunch preview">
-      <div class="hh-bg" aria-hidden="true"></div>
-      <div class="hh-inner">
-        <div class="hh-top">
-          <div class="hh-kicker" id="hhHeroKicker">Loading…</div>
-          <div class="hh-title" id="hhHeroTitle">Today’s Lunch Preview</div>
-          <p class="hh-sub" id="hhHeroSub">Swipe/drag left & right — tap any item to open the menu.</p>
-          <div class="hh-actions">
-            <a class="hh-btn hh-btn-primary" href="menu.html">View Full Menu</a>
-            <a class="hh-btn" href="tel:3372211035">Call to Order</a>
-          </div>
-        </div>
-        <div class="hh-strip" role="region" aria-label="Scrolling lunch items">
-          <div class="hh-track" id="hhHeroTrack"></div>
-          <div class="hh-fade left" aria-hidden="true"></div>
-          <div class="hh-fade right" aria-hidden="true"></div>
-        </div>
-        <button class="hh-down" id="hhHeroDown" type="button" aria-label="Scroll down">
-          <span class="hh-down-ic" aria-hidden="true"><span>↓</span></span>
-          <span>Keep scrolling</span>
-        </button>
-      </div>
-    </section>
-
   </div>
 </section>
 
-<!-- Footer -->
+<!-- ==================== LUNCH PREVIEW HERO (from Header Code Injection) ==================== -->
+<section id="hhHomeMenuHero" aria-label="Today’s lunch preview">
+  <div class="hh-bg" aria-hidden="true"></div>
+  <div class="hh-inner">
+    <div class="hh-top">
+      <div class="hh-kicker" id="hhHeroKicker">Loading…</div>
+      <div class="hh-title" id="hhHeroTitle">Today’s Lunch Preview</div>
+      <p class="hh-sub" id="hhHeroSub">Swipe/drag left & right — tap any item to open the menu.</p>
+      <div class="hh-actions">
+        <a class="hh-btn hh-btn-primary" href="menu.html">View Full Menu</a>
+        <a class="hh-btn" href="tel:3372211035">Call to Order</a>
+      </div>
+    </div>
+    <div class="hh-strip" role="region" aria-label="Scrolling lunch items">
+      <div class="hh-track" id="hhHeroTrack"></div>
+      <div class="hh-fade left" aria-hidden="true"></div>
+      <div class="hh-fade right" aria-hidden="true"></div>
+    </div>
+    <button class="hh-down" id="hhHeroDown" type="button" aria-label="Scroll down">
+      <span class="hh-down-ic" aria-hidden="true"><span>↓</span></span>
+      <span>Keep scrolling</span>
+    </button>
+  </div>
+</section>
+
+<!-- ==================== FOOTER (from Footer.xml) ==================== -->
 <footer class="site-footer" aria-label="Footer">
   <div class="footer-inner">
     <div class="footer-col footer-left">
