@@ -1,455 +1,735 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hot Headz Southern Foods · DeRidder, LA</title>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hot Headz · Southern Fire</title>
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #fef7ed;
-            color: #2c1e10;
-            line-height: 1.6;
-        }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0c0b0a;
+      color: #f5e9da;
+      overflow-x: hidden;
+    }
 
-        h1, h2, h3 {
-            font-family: 'Merriweather', serif;
-            font-weight: 700;
-        }
+    /* custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #2a1e14; }
+    ::-webkit-scrollbar-thumb { background: #e05a2f; border-radius: 10px; }
 
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 0;
-        }
+    /*  video background */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -2;
+      opacity: 0.5;
+      filter: brightness(0.7) contrast(1.2);
+    }
 
-        /* Header & Navigation */
-        header {
-            background-color: #8b2c1d; /* deep red */
-            color: #fff;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(224,90,47,0.25) 0%, rgba(10,8,7,0.9) 80%);
+      z-index: -1;
+    }
 
-        .header-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+    /*  navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.8rem 4rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      transition: all 0.4s ease;
+      mix-blend-mode: difference;
+    }
 
-        .logo h1 {
-            font-size: 2rem;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
+    .navbar.scrolled {
+      background: rgba(10,8,7,0.95);
+      backdrop-filter: blur(8px);
+      padding: 1rem 4rem;
+      border-bottom: 2px solid #e05a2f;
+      mix-blend-mode: normal;
+    }
 
-        .logo p {
-            font-style: italic;
-            font-size: 0.9rem;
-            color: #ffd7b0;
-        }
+    .logo {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.8rem;
+      letter-spacing: 4px;
+      background: linear-gradient(45deg, #f97316, #e05a2f, #facc15);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 15px rgba(249,115,22,0.6);
+    }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+    }
 
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
+    .nav-links a {
+      color: #f5e9da;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      position: relative;
+      padding: 0.3rem 0;
+    }
 
-        nav ul li a:hover {
-            color: #ffb347;
-        }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #f97316;
+      transition: width 0.3s ease;
+    }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('https://images.unsplash.com/photo-1626082927388-49e097b2e9d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
-            /* image shows crispy fried chicken – replace with your own if desired */
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-        }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
 
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+    /*  hero section with flame text */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
 
-        .hero h2 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px #000;
-        }
+    .hero-content {
+      max-width: 1100px;
+      padding: 2rem;
+    }
 
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
+    .hero h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 8rem;
+      line-height: 0.9;
+      text-transform: uppercase;
+      color: #f5e9da;
+      text-shadow: 0 0 30px #e05a2f, 0 0 60px #f97316;
+      animation: flicker 3s infinite alternate;
+    }
 
-        .btn {
-            display: inline-block;
-            background-color: #e07a2c;
-            color: #fff;
-            padding: 0.9rem 2.5rem;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: background 0.3s, transform 0.2s;
-            border: none;
-            cursor: pointer;
-        }
+    @keyframes flicker {
+      0% { text-shadow: 0 0 30px #e05a2f, 0 0 60px #f97316; }
+      50% { text-shadow: 0 0 40px #facc15, 0 0 80px #e05a2f; }
+      100% { text-shadow: 0 0 30px #f97316, 0 0 60px #facc15; }
+    }
 
-        .btn:hover {
-            background-color: #b85e1a;
-            transform: scale(1.05);
-        }
+    .hero p {
+      font-size: 1.6rem;
+      margin: 2rem 0 3rem;
+      color: #ffdbb5;
+      backdrop-filter: blur(4px);
+    }
 
-        /* Section Headings */
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 2rem;
-            color: #8b2c1d;
-            position: relative;
-        }
+    .btn {
+      background: linear-gradient(135deg, #e05a2f, #f97316);
+      color: #0c0b0a;
+      font-weight: 800;
+      font-size: 1.4rem;
+      padding: 1.2rem 3.5rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 30px #e05a2f;
+      text-decoration: none;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
 
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: #e07a2c;
-            margin: 0.5rem auto;
-        }
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 50px #facc15;
+    }
 
-        /* About */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-        }
+    /*  section styles */
+    section {
+      padding: 6rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
 
-        .about-text {
-            flex: 1 1 300px;
-        }
+    .section-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 5rem;
+      text-align: center;
+      margin-bottom: 4rem;
+      color: #f5e9da;
+      letter-spacing: 3px;
+      position: relative;
+    }
 
-        .about-text p {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
+    .section-title span {
+      color: #f97316;
+      text-shadow: 0 0 20px #f97316;
+    }
 
-        .about-image {
-            flex: 1 1 300px;
-        }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
 
-        .about-image img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
-        }
+    /*  about with parallax */
+    .about {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      background: rgba(20,15,12,0.8);
+      backdrop-filter: blur(8px);
+      border-radius: 50px;
+      padding: 4rem;
+      border: 1px solid #e05a2f;
+      transform: translateY(50px);
+      opacity: 0;
+      transition: 0.8s;
+    }
 
-        /* Featured Menu */
-        .menu-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
-        }
+    .about.revealed {
+      transform: translateY(0);
+      opacity: 1;
+    }
 
-        .menu-card {
-            background: #fff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-        }
+    .about-text {
+      flex: 1;
+    }
 
-        .menu-card:hover {
-            transform: translateY(-10px);
-        }
+    .about-text h3 {
+      font-size: 2.8rem;
+      color: #facc15;
+      margin-bottom: 1.5rem;
+    }
 
-        .menu-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+    .about-text p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #e0cfbc;
+    }
 
-        .menu-card-content {
-            padding: 1.5rem;
-        }
+    .about-image {
+      flex: 1;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 30px 40px rgba(224,90,47,0.5);
+      transition: 0.5s;
+    }
 
-        .menu-card h3 {
-            font-size: 1.8rem;
-            color: #8b2c1d;
-            margin-bottom: 0.5rem;
-        }
+    .about-image:hover {
+      transform: scale(1.02);
+    }
 
-        .menu-card p {
-            margin-bottom: 1rem;
-            color: #4a3b2f;
-        }
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
-        .price {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: #e07a2c;
-        }
+    /*  spice meter interactive */
+    .spice-section {
+      text-align: center;
+      background: linear-gradient(180deg, #1e1611, #0c0b0a);
+      border-radius: 100px 100px 0 0;
+    }
 
-        /* Location & Hours */
-        .info-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3rem;
-            justify-content: center;
-        }
+    .spice-meter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 3rem 0;
+    }
 
-        .info-box {
-            background: #fff2e1;
-            padding: 2rem;
-            border-radius: 20px;
-            flex: 1 1 250px;
-            text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
+    #heatSlider {
+      -webkit-appearance: none;
+      width: 60%;
+      height: 20px;
+      background: linear-gradient(90deg, #f5b342, #e05a2f, #b22222);
+      border-radius: 20px;
+      outline: none;
+      margin: 2rem 0;
+    }
 
-        .info-box i {
-            font-size: 3rem;
-            color: #e07a2c;
-            margin-bottom: 1rem;
-        }
+    #heatSlider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 40px;
+      height: 40px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 30px #f97316;
+      cursor: pointer;
+      border: 4px solid #f97316;
+    }
 
-        .info-box h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
+    .heat-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #facc15;
+    }
 
-        .info-box p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-        }
+    .heat-menu {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+    }
 
-        /* Call to Action */
-        .cta {
-            background: #8b2c1d;
-            color: #fff;
-            text-align: center;
-            padding: 4rem 2rem;
-            border-radius: 30px;
-            margin: 3rem 0;
-        }
+    .heat-item {
+      background: #231d17;
+      padding: 2rem;
+      border-radius: 30px;
+      width: 280px;
+      border: 2px solid transparent;
+      transition: 0.3s;
+      opacity: 0.6;
+      filter: grayscale(0.5);
+    }
 
-        .cta h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-        }
+    .heat-item.active {
+      border-color: #f97316;
+      opacity: 1;
+      filter: none;
+      transform: scale(1.05);
+      box-shadow: 0 0 40px #e05a2f;
+    }
 
-        .cta .btn {
-            background-color: #ffb347;
-            color: #2c1e10;
-            font-size: 1.5rem;
-            padding: 1rem 3rem;
-            margin-top: 1rem;
-        }
+    .heat-item i {
+      font-size: 4rem;
+      color: #f97316;
+      margin-bottom: 1rem;
+    }
 
-        .cta .btn:hover {
-            background-color: #ffa01c;
-        }
+    /*  menu cards with 3D flip */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
 
-        /* Footer */
-        footer {
-            background-color: #1f1307;
-            color: #d4c2ad;
-            padding: 2rem 0;
-            text-align: center;
-        }
+    .flip-card {
+      background: transparent;
+      width: 100%;
+      height: 400px;
+      perspective: 2000px;
+    }
 
-        .social-links {
-            margin-bottom: 1rem;
-        }
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+    }
 
-        .social-links a {
-            color: #ffd7b0;
-            font-size: 2rem;
-            margin: 0 0.7rem;
-            transition: color 0.3s;
-        }
+    .flip-card:hover .flip-inner {
+      transform: rotateY(180deg);
+    }
 
-        .social-links a:hover {
-            color: #e07a2c;
-        }
+    .flip-front, .flip-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.5);
+    }
 
-        footer p {
-            font-size: 1rem;
-        }
+    .flip-front {
+      background: #2d231d;
+    }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-wrapper {
-                flex-direction: column;
-                text-align: center;
-            }
-            nav ul {
-                margin-top: 1rem;
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.2rem;
-            }
-            .section-title {
-                font-size: 2.2rem;
-            }
-        }
-    </style>
+    .flip-front img {
+      width: 100%;
+      height: 70%;
+      object-fit: cover;
+    }
+
+    .flip-front h3 {
+      font-size: 2rem;
+      margin: 1rem 0 0.5rem;
+      color: #f5e9da;
+    }
+
+    .flip-back {
+      background: linear-gradient(145deg, #e05a2f, #b0451a);
+      color: #0c0b0a;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .flip-back p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 1rem 0;
+    }
+
+    .flame-icon {
+      font-size: 3rem;
+      color: #facc15;
+      margin-bottom: 1rem;
+      animation: burn 1.5s infinite alternate;
+    }
+
+    @keyframes burn {
+      0% { transform: scale(1); text-shadow: 0 0 10px yellow; }
+      100% { transform: scale(1.2); text-shadow: 0 0 30px orange; }
+    }
+
+    /*  location with 3D tilt */
+    .location-card {
+      display: flex;
+      gap: 3rem;
+      background: #1f1712;
+      border-radius: 50px;
+      padding: 3rem;
+      transform-style: preserve-3d;
+      transition: transform 0.3s;
+    }
+
+    .location-card:hover {
+      transform: rotateX(2deg) rotateY(2deg);
+    }
+
+    .map {
+      flex: 1;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 20px 30px black;
+    }
+
+    .map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      filter: grayscale(0.8) sepia(0.3) hue-rotate(10deg);
+    }
+
+    .address {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .address h3 {
+      font-size: 3rem;
+      color: #f97316;
+      margin-bottom: 2rem;
+    }
+
+    .address p {
+      font-size: 1.4rem;
+      margin: 0.5rem 0;
+    }
+
+    /*  footer */
+    footer {
+      text-align: center;
+      padding: 3rem;
+      background: #080605;
+      border-top: 3px solid #e05a2f;
+    }
+
+    .social-icons a {
+      color: #f5e9da;
+      font-size: 2.5rem;
+      margin: 0 1.5rem;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .social-icons a:hover {
+      color: #f97316;
+      transform: translateY(-10px) scale(1.2);
+    }
+
+    /*  floating embers (particles) */
+    #particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .ember {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #facc15;
+      border-radius: 50%;
+      filter: blur(2px);
+      opacity: 0.7;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0.8); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+
+    /*  responsive */
+    @media (max-width: 900px) {
+      .navbar { padding: 1rem 2rem; flex-direction: column; gap: 1rem; }
+      .hero h1 { font-size: 4rem; }
+      .about { flex-direction: column; }
+      .location-card { flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container header-wrapper">
-            <div class="logo">
-                <h1>Hot Headz 🔥</h1>
-                <p>Southern Foods · DeRidder, LA</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+
+  <!-- background video (from Coverr – free sizzling steak) -->
+  <video class="video-bg" autoplay muted loop playsinline>
+    <source src="https://coverr.co/s3/mp4/Sizzling-Steak-on-the-Grill.mp4" type="video/mp4">
+    <!-- fallback if video fails -->
+  </video>
+  <div class="overlay"></div>
+
+  <!-- floating embers (generated by js) -->
+  <div id="particles"></div>
+
+  <!-- fixed navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="logo">🔥 HOT HEADZ</div>
+    <div class="nav-links">
+      <a href="#">HOME</a>
+      <a href="#about">OUR FIRE</a>
+      <a href="#menu">MENU</a>
+      <a href="#location">BURN ZONE</a>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>SOUTHERN<br>HEAT</h1>
+      <p>DeRidder's spiciest soul food – where every bite ignites your taste buds.</p>
+      <a href="#menu" class="btn">🔥 FEEL THE BURN</a>
+    </div>
+  </section>
+
+  <!-- about with scroll reveal -->
+  <section id="about" class="container">
+    <h2 class="section-title"><span>OUR</span> STORY</h2>
+    <div class="about" id="aboutReveal">
+      <div class="about-text">
+        <h3>From a backyard kitchen to the bayou.</h3>
+        <p>Hot Headz started with a dream and a ghost pepper. Chef Marie-Louise infused her grandmother's recipes with Louisiana fire, creating a menu that pays homage to tradition while turning up the heat. Every gumbo, every wing, every po'boy carries the soul of the South and a kick you won't forget. Come join us – but bring a glass of sweet tea.</p>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80" alt="Cooking over fire">
+      </div>
+    </div>
+  </section>
+
+  <!-- interactive spice meter -->
+  <section class="spice-section">
+    <div class="container">
+      <h2 class="section-title"><span>FIND YOUR</span> HEAT</h2>
+      <div class="spice-meter">
+        <input type="range" min="1" max="5" value="3" id="heatSlider">
+        <div class="heat-value" id="heatLabel">🔥🔥🔥 MEDIUM</div>
+      </div>
+      <div class="heat-menu" id="heatMenu">
+        <div class="heat-item" data-heat="1"><i class="fas fa-pepper-hot"></i><h3>Mild</h3><p>Smoked sausage & cheese grits</p></div>
+        <div class="heat-item" data-heat="2"><i class="fas fa-pepper-hot"></i><i class="fas fa-pepper-hot"></i><h3>Warm</h3><p>Cajun chicken pasta</p></div>
+        <div class="heat-item active" data-heat="3"><i class="fas fa-pepper-hot"></i><i class="fas fa-pepper-hot"></i><i class="fas fa-pepper-hot"></i><h3>Medium</h3><p>Nashville hot chicken</p></div>
+        <div class="heat-item" data-heat="4"><i class="fas fa-pepper-hot"></i><i class="fas fa-pepper-hot"></i><i class="fas fa-pepper-hot"></i><i class="fas fa-pepper-hot"></i><h3>Hot</h3><p>Voodoo shrimp & grits</p></div>
+        <div class="heat-item" data-heat="5"><i class="fas fa-pepper-hot"></i><i class="fas fa-pepper-hot"></i><i class="fas fa-pepper-hot"></i><i class="fas fa-pepper-hot"></i><i class="fas fa-pepper-hot"></i><h3>🔥🔥🔥</h3><p>Ghost pepper gumbo</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- menu 3D flip cards -->
+  <section id="menu" class="container">
+    <h2 class="section-title"><span>FLAME</span> FAVORITES</h2>
+    <div class="menu-grid">
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Hot Chicken">
+            <h3>NASHVILLE HOT</h3>
+          </div>
+          <div class="flip-back">
+            <i class="fas fa-fire flame-icon"></i>
+            <h3>14.99</h3>
+            <p>Buttermilk fried chicken, cayenne paste, pickles. Choose your burn.</p>
+          </div>
         </div>
-    </header>
-
-    <main>
-        <!-- Hero / Home -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h2>Bringin' the Heat & the Soul</h2>
-                <p>Authentic Southern cooking with a spicy kick. Fried chicken, gumbo, po’boys & more – made from scratch daily.</p>
-                <a href="#menu" class="btn">View Our Menu</a>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="container">
-            <h2 class="section-title">Our Story</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Hot Headz was born in a small kitchen in DeRidder, Louisiana, where family recipes handed down for generations meet bold, modern flavors. We believe that Southern food should be hearty, honest, and just a little dangerous – hence the name.</p>
-                    <p>From our crispy fried catfish to our five‑alarm gumbo, every dish is made with love and a generous pinch of cayenne. Come join us for a taste of the South that’ll warm your soul and fire up your taste buds.</p>
-                </div>
-                <div class="about-image">
-                    <!-- Replace with your own interior or team photo -->
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80" alt="Southern kitchen atmosphere">
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Menu -->
-        <section id="menu" class="container">
-            <h2 class="section-title">Hot Headz Favorites</h2>
-            <div class="menu-items">
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Nashville hot chicken">
-                    <div class="menu-card-content">
-                        <h3>Nashville Hot Chicken</h3>
-                        <p>Buttermilk fried chicken tossed in our signature cayenne paste. Served with pickles & white bread. <strong>🔥 choose your heat level!</strong></p>
-                        <span class="price">$14.99</span>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1627662052219-71faf2c6e79a?ixlib=rb-4.0.3&auto=format&fit=crop&w=117层的&q=80" alt="Cajun gumbo">
-                    <div class="menu-card-content">
-                        <h3>Five‑Alarm Gumbo</h3>
-                        <p>Dark roux gumbo with andouille sausage, chicken, and okra. Served with rice. Loaded with spice and flavor.</p>
-                        <span class="price">$12.49</span>
-                    </div>
-                </div>
-                <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1601055792003-7a7a9f9c0a5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1171&q=80" alt="Shrimp po' boy">
-                    <div class="menu-card-content">
-                        <h3>Bayou Po’ Boy</h3>
-                        <p>Crispy fried shrimp, lettuce, tomato, and our spicy remoulade on a fresh French loaf. Comes with dirty rice or fries.</p>
-                        <span class="price">$13.99</span>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="#" class="btn" style="background-color: #8b2c1d;">Full Menu (PDF)</a>
-            </div>
-        </section>
-
-        <!-- Location & Hours -->
-        <section id="contact" class="container">
-            <h2 class="section-title">Come See Us</h2>
-            <div class="info-row">
-                <div class="info-box">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Location</h3>
-                    <p>123 Spice Alley<br>DeRidder, LA 70634</p>
-                </div>
-                <div class="info-box">
-                    <i class="fas fa-clock"></i>
-                    <h3>Hours</h3>
-                    <p>Mon–Thu: 11am – 9pm<br>Fri–Sat: 11am – 10pm<br>Sun: Closed (family day)</p>
-                </div>
-                <div class="info-box">
-                    <i class="fas fa-phone-alt"></i>
-                    <h3>Contact</h3>
-                    <p>(337) 555‑HOTZ<br>hello@hotheadzla.com</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Call to Action -->
-        <div class="container">
-            <div class="cta">
-                <h2>Ready to feel the heat?</h2>
-                <p>Order online for pickup or delivery (DoorDash / Uber Eats coming soon).</p>
-                <a href="#" class="btn">Order Online Now</a>
-            </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="https://images.unsplash.com/photo-1601055792003-7a7a9f9c0a5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1171&q=80" alt="Po Boy">
+            <h3>BAYOU PO' BOY</h3>
+          </div>
+          <div class="flip-back">
+            <i class="fas fa-fire flame-icon"></i>
+            <h3>13.49</h3>
+            <p>Crispy shrimp, spicy remoulade, dressed. Served with dirty rice.</p>
+          </div>
         </div>
-    </main>
-
-    <footer>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <img src="https://images.unsplash.com/photo-1627662052219-71faf2c6e79a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1172&q=80" alt="Gumbo">
+            <h3>FIVE‑ALARM GUMBO</h3>
+          </div>
+          <div class="flip-back">
+            <i class="fas fa-fire flame-icon"></i>
+            <h3>12.99</h3>
+            <p>Andouille, chicken, okra, dark roux. Served with rice & crackers.</p>
+          </div>
         </div>
-        <p>&copy; 2026 Hot Headz Southern Foods · DeRidder, Louisiana. All rights reserved.</p>
-    </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- location with 3D tilt -->
+  <section id="location" class="container">
+    <h2 class="section-title"><span>FIND THE</span> FIRE</h2>
+    <div class="location-card" id="tiltCard">
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107631.78285629198!2d-93.343887!3d30.846553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x863b87e4b1f2a6b1%3A0x4f4b8f9f9b9f9b9f!2sDeRidder%2C%20LA!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <div class="address">
+        <h3>🔥 HOT HEADZ</h3>
+        <p><i class="fas fa-map-pin"></i> 123 Spice Alley, DeRidder, LA 70634</p>
+        <p><i class="fas fa-phone-alt"></i> (337) 555-HOTZ</p>
+        <p><i class="fas fa-clock"></i> Mon-Thu 11am-9pm · Fri-Sat 11am-10pm</p>
+        <p><i class="fas fa-clock"></i> Sun – family day (closed)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+    </div>
+    <p style="margin-top: 2rem; color: #a58367;">© 2026 Hot Headz Southern Foods · DeRidder, LA · All rights reserved. Burn responsibly.</p>
+  </footer>
+
+  <script>
+    // 1. navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // 2. about section reveal
+    const aboutSection = document.getElementById('aboutReveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.2 });
+    observer.observe(aboutSection);
+
+    // 3. spice meter interactive
+    const slider = document.getElementById('heatSlider');
+    const heatLabel = document.getElementById('heatLabel');
+    const items = document.querySelectorAll('.heat-item');
+
+    function updateHeat(level) {
+      // update label
+      const labels = ['🌶️ MILD', '🌶️🌶️ WARM', '🌶️🌶️🌶️ MEDIUM', '🌶️🌶️🌶️🌶️ HOT', '🌶️🌶️🌶️🌶️🌶️ INFERNO'];
+      heatLabel.innerHTML = labels[level-1];
+
+      // highlight corresponding item
+      items.forEach(item => {
+        const heat = parseInt(item.dataset.heat);
+        if (heat === level) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    slider.addEventListener('input', (e) => {
+      updateHeat(parseInt(e.target.value));
+    });
+
+    // set initial
+    updateHeat(3);
+
+    // 4. floating embers (particles)
+    const particlesDiv = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const ember = document.createElement('div');
+      ember.classList.add('ember');
+      ember.style.left = Math.random() * 100 + '%';
+      ember.style.animationDuration = Math.random() * 5 + 3 + 's';
+      ember.style.animationDelay = Math.random() * 5 + 's';
+      ember.style.width = Math.random() * 12 + 4 + 'px';
+      ember.style.height = ember.style.width;
+      ember.style.background = `hsl(${20 + Math.random()*30}, 90%, 60%)`;
+      particlesDiv.appendChild(ember);
+    }
+
+    // 5. 3D tilt effect on location card (simple mousemove)
+    const tiltCard = document.getElementById('tiltCard');
+    tiltCard.addEventListener('mousemove', (e) => {
+      const rect = tiltCard.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      tiltCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    tiltCard.addEventListener('mouseleave', () => {
+      tiltCard.style.transform = 'rotateX(0) rotateY(0)';
+    });
+  </script>
 </body>
 </html>
