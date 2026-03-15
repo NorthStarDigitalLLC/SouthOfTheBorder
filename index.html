@@ -701,101 +701,6 @@
     }
     .cta-buttons .btn { width: 100%; }
 
-    /* ---------- BOTTOM FLOATING MENU ---------- */
-    .family-bottom-menu {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-      background: rgba(15, 47, 40, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(42, 157, 143, 0.35);
-      border-radius: 60px;
-      padding: 8px 20px;
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-      max-width: 95vw;
-      overflow-x: auto;
-      white-space: nowrap;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-    }
-    .family-bottom-menu::-webkit-scrollbar {
-      display: none;
-    }
-
-    .family-logo-block {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-    }
-    .family-logo-block:hover {
-      opacity: 0.9;
-    }
-    .family-logo-block img {
-      max-height: 40px;
-      width: auto;
-      display: block;
-      border-radius: 40px;
-    }
-    .family-logo-text {
-      font-weight: 900;
-      font-size: 1.2rem;
-      background: linear-gradient(135deg, #fff, var(--f-ice));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      white-space: nowrap;
-    }
-    .family-logo-text i {
-      color: var(--f-sky);
-      margin-right: 6px;
-    }
-
-    .family-nav-links {
-      display: flex;
-      gap: 8px;
-      flex-wrap: nowrap;
-      align-items: center;
-    }
-    .family-nav-links a {
-      color: rgba(255, 255, 255, 0.9);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 8px 16px;
-      border-radius: 40px;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-    .family-nav-links a i {
-      color: var(--f-sky);
-      font-size: 1.1rem;
-    }
-    .family-nav-links a:hover {
-      background: rgba(42, 157, 143, 0.15);
-      color: var(--f-sky);
-    }
-    .family-nav-links .cta {
-      background: linear-gradient(135deg, var(--f-sky-light), var(--f-sky));
-      color: #ffffff !important;
-      font-weight: 900;
-      box-shadow: 0 4px 12px -4px rgba(42, 157, 143, 0.5);
-    }
-    .family-nav-links .cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px -6px rgba(42, 157, 143, 0.6);
-    }
-
     /* ---------- FOOTER ---------- */
     .site-footer {
       background: #0f2f28;
@@ -1046,25 +951,6 @@
         grid-template-columns: 1fr;
       }
       
-      /* Bottom menu mobile adjustments */
-      .family-bottom-menu {
-        bottom: 12px;
-        padding: 6px 16px;
-        gap: 15px;
-      }
-      .family-logo-text {
-        font-size: 1rem;
-      }
-      .family-logo-text i {
-        font-size: 1rem;
-      }
-      .family-nav-links a {
-        padding: 6px 12px;
-        font-size: 0.85rem;
-      }
-      .family-nav-links a i {
-        font-size: 1rem;
-      }
       body {
         padding-bottom: 80px;
       }
@@ -1087,15 +973,6 @@
       }
       .hero-card h3 {
         font-size: 1.5rem;
-      }
-      .family-nav-links a span {
-        display: none;
-      }
-      .family-nav-links a i {
-        margin: 0;
-      }
-      .family-bottom-menu {
-        gap: 8px;
       }
     }
 
@@ -1732,11 +1609,11 @@
     // Auto-update copyright year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Smooth scroll for bottom menu links (only hash links)
-    document.querySelectorAll('.family-nav-links a, .family-logo-block').forEach(anchor => {
+    // Smooth scroll for footer links (only hash links)
+    document.querySelectorAll('.footer-link[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
-        if (href && href.startsWith('#')) {
+        if (href && href !== '#') {
           e.preventDefault();
           const target = document.querySelector(href);
           if (target) {
